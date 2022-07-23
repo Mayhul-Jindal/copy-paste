@@ -1,4 +1,4 @@
-package com.example.copy_paste
+package com.example.copy_paste.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -13,20 +13,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
-
 @Composable
-fun SignUpScreen(navController: NavHostController){
+fun DetailScreen2(navController: NavHostController){
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ){
         Text(
-            text = "Username   Password   Re-Enter-Password",
+            text = "Send to device",
             style = MaterialTheme.typography.body1,
             color = Color.Black,
-            fontSize = MaterialTheme.typography.h6.fontSize,
+            fontSize = MaterialTheme.typography.h2.fontSize,
             modifier = Modifier
-                .clickable { /*TODO*/ }
+                .clickable { navController.popBackStack() }
         )
     }
 }
@@ -34,6 +33,6 @@ fun SignUpScreen(navController: NavHostController){
 @Composable
 @Preview(showBackground = true)
 
-fun display4(){
-    SignUpScreen(navController = rememberNavController())
+fun Display5(){
+    DetailScreen2(navController = rememberNavController())
 }

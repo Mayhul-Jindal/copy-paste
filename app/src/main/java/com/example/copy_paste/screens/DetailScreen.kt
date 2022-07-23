@@ -1,4 +1,4 @@
-package com.example.copy_paste
+package com.example.copy_paste.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.copy_paste.navigation.Screen
 
 
 @Composable
@@ -26,7 +27,14 @@ fun DetailScreen(navController: NavHostController){
             color = Color.Black,
             fontSize = MaterialTheme.typography.h2.fontSize,
             modifier = Modifier
-                .clickable { navController.popBackStack() }
+                .clickable {
+                    navController.navigate(
+                    route = Screen.Detail2.passInfo(
+                        id = 100,
+                        name = "hahahahah"
+                        )
+                    )
+                }
         )
     }
 }
@@ -34,7 +42,7 @@ fun DetailScreen(navController: NavHostController){
 @Composable
 @Preview(showBackground = true)
 
-fun display2(){
+fun Display2(){
     DetailScreen(navController = rememberNavController())
 }
 

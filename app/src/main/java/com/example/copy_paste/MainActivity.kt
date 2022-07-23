@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.copy_paste.navigation.nav_graphs.SetupNavGraph
 import com.example.copy_paste.ui.theme.CopypasteTheme
 
 class MainActivity : ComponentActivity() {
@@ -16,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CopypasteTheme {
                 navController = rememberNavController()
-                SetupNavGraph(navConroller = navController)
+                SetupNavGraph(navController = navController)
             }
         }
     }
