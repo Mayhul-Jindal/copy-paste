@@ -9,7 +9,6 @@ import com.example.copy_paste.navigation.nav_graphs.SetupNavGraph
 import com.example.copy_paste.ui.theme.CopypasteTheme
 
 class MainActivity : ComponentActivity() {
-
     lateinit var navController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {
