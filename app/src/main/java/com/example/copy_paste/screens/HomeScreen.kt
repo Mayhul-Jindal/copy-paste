@@ -3,21 +3,25 @@ package com.example.copy_paste.screens
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.copy_paste.CopyPasteNotif
 import com.example.copy_paste.navigation.AUTH_GRAPH_ROUTE
 import com.example.copy_paste.navigation.Screen
 
 
 @Composable
 fun HomeScreen(navController: NavHostController){
+    val context = LocalContext.current
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -38,6 +42,12 @@ fun HomeScreen(navController: NavHostController){
                         navController.navigate(AUTH_GRAPH_ROUTE)
                     }
             )
+            OutlinedButton(onClick = {
+                val notif = CopyPasteNotif(context, "Test-body", "Test-title")
+                notif.fireNotification()
+            }) {
+                Text(text = "Test hain yeh")
+            }
         }
     }
 }

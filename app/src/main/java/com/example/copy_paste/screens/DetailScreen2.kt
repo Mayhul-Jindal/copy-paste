@@ -27,6 +27,7 @@ fun DetailScreen2(navController: NavHostController){
             modifier = Modifier
                 .clickable { navController.popBackStack() }
         )
+
     }
 }
 

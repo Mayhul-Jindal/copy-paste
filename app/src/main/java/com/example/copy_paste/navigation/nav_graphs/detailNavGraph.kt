@@ -3,14 +3,15 @@ package com.example.copy_paste.navigation.nav_graphs
 import android.util.Log
 import androidx.navigation.*
 import androidx.navigation.compose.composable
+import com.example.copy_paste.data.Copied
+import com.example.copy_paste.data.CopiedDao
+import com.example.copy_paste.data.CopiedRepoImpl
+import com.example.copy_paste.data.CopiedRepository
 import com.example.copy_paste.navigation.DETAIL_ARGUMENT_KEY1
 import com.example.copy_paste.navigation.DETAIL_ARGUMENT_KEY2
 import com.example.copy_paste.navigation.DETAIL_GRAPH_ROUTE
 import com.example.copy_paste.navigation.Screen
-import com.example.copy_paste.screens.DetailScreen
-import com.example.copy_paste.screens.DetailScreen2
-import com.example.copy_paste.screens.LoginScreen
-import com.example.copy_paste.screens.SignUpScreen
+import com.example.copy_paste.screens.*
 
 fun NavGraphBuilder.detailNavGraph(
     navController: NavHostController
