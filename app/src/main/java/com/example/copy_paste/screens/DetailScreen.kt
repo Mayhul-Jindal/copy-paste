@@ -49,8 +49,7 @@ fun DetailScreen(
                     .clickable {
                         navController.navigate(
                             route = Screen.Detail2.passInfo(
-                                id = 100,
-                                name = "hahahahah"
+                                text = "this is a test"
                             )
                         )
                     }

@@ -16,9 +16,10 @@ import com.example.copy_paste.screens.*
 fun NavGraphBuilder.detailNavGraph(
     navController: NavHostController
 ){
+    val uri = "https://example.com"
     navigation(
         route = DETAIL_GRAPH_ROUTE,
-        startDestination = Screen.Detail.route
+        startDestination = Screen.Detail.route,
     ){
         composable(
             route = Screen.Detail.route
@@ -29,18 +30,21 @@ fun NavGraphBuilder.detailNavGraph(
             route = Screen.Detail2.route,
             arguments = listOf(
                 navArgument(DETAIL_ARGUMENT_KEY1){
-                    type = NavType.IntType
-                    defaultValue = 0
-                },
-                navArgument(DETAIL_ARGUMENT_KEY2){
                     type = NavType.StringType
-                    defaultValue = "No-Text_given"
+                    defaultValue = "No_Text_given"
                 }
-            )
+            ),
+//            arguments = listOf(navArgument("copied_text")),
+            deepLinks = listOf(navDeepLink { uriPattern =  "$uri/copied_text={copied_text}" })
         ){
-            Log.d("Args", it.arguments?.getInt(DETAIL_ARGUMENT_KEY1).toString())
-            Log.d("Args", it.arguments?.getString(DETAIL_ARGUMENT_KEY2).toString())
-            DetailScreen2(navController)
+//            Log.d("Args", it.arguments?.getInt(DETAIL_ARGUMENT_KEY1).toString())
+//            Log.d("Args", it.arguments?.getString(DETAIL_ARGUMENT_KEY2).toString())
+            backStackEntry ->
+            val arguments = backStackEntry.arguments
+            arguments?.getString("copied_text")
+                ?.let {
+                    DetailScreen2(navController, copiedText = it)
+                }
         }
     }
 }

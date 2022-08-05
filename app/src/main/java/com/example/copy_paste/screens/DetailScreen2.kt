@@ -14,7 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun DetailScreen2(navController: NavHostController){
+fun DetailScreen2(navController: NavHostController, copiedText: String){
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
@@ -35,5 +35,5 @@ fun DetailScreen2(navController: NavHostController){
 @Preview(showBackground = true)
 
 fun Display5(){
-    DetailScreen2(navController = rememberNavController())
+    DetailScreen2(navController = rememberNavController(), copiedText = "this is a test")
 }
