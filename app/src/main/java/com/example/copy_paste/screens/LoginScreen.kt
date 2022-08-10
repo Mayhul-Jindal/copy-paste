@@ -1,5 +1,6 @@
 package com.example.copy_paste.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -23,18 +24,17 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.example.copy_paste.R
 import com.example.copy_paste.navigation.DETAIL_GRAPH_ROUTE
 import com.example.copy_paste.navigation.Screen
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun LoginScreen(navController: NavHostController, myViewModel: LoginViewModel){
+fun LoginScreen(navController: NavHostController, myViewModel: LoginViewModel) {
     Scaffold(
         backgroundColor = Color.Yellow
     ) {
@@ -55,7 +55,7 @@ fun LoginScreen(navController: NavHostController, myViewModel: LoginViewModel){
                     .weight(2f)
                     .padding(8.dp),
                 shape = RoundedCornerShape(32.dp),
-            ){
+            ) {
                 Column(
                     Modifier
                         .fillMaxSize()
@@ -63,21 +63,28 @@ fun LoginScreen(navController: NavHostController, myViewModel: LoginViewModel){
                         .verticalScroll(rememberScrollState())
                 ) {
                     Text(text = "Welcome Back!", fontWeight = FontWeight.Bold, fontSize = 32.sp)
-                    Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center){
+                    Column(
+                        Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
                         Spacer(modifier = Modifier.weight(1f))
                         MyTextField(
                             label = "Username",
                             value = myViewModel.username,
-                            onValueChanged = {myViewModel.onUsernameChanged(it)},
+                            onValueChanged = { myViewModel.onUsernameChanged(it) },
                             trailingIconView = myViewModel.trailingIconView
                         )
                         Spacer(modifier = Modifier.height(8.dp))
                         MyTextField(
                             label = "Password",
-                            keyboard =  KeyboardOptions(keyboardType = KeyboardType.Password, imeAction = ImeAction.Done),
+                            keyboard = KeyboardOptions(
+                                keyboardType = KeyboardType.Password,
+                                imeAction = ImeAction.Done
+                            ),
                             visualTrans = myViewModel.test(),
                             value = myViewModel.password,
-                            onValueChanged = {myViewModel.onPasswordChanged(it)},
+                            onValueChanged = { myViewModel.onPasswordChanged(it) },
                             trailingIconView = myViewModel.trailingPeekIcon
                         )
                         Text(
@@ -145,7 +152,7 @@ fun MyTextField(
     )
 }
 
-class LoginViewModel: ViewModel(){
+class LoginViewModel: ViewModel() {
     //State
     var username by mutableStateOf("")
     var password by mutableStateOf("")
@@ -175,21 +182,18 @@ class LoginViewModel: ViewModel(){
     val isFormValid by derivedStateOf {
         username.isNotBlank() && password.length >= 7
     }
+
     //event
-    fun test(): VisualTransformation{
+    fun test(): VisualTransformation {
         if (isPasswordVisible) return VisualTransformation.None else return PasswordVisualTransformation()
     }
-    fun onUsernameChanged(newString: String){
+
+    fun onUsernameChanged(newString: String) {
         username = newString
     }
-    fun onPasswordChanged(newString: String){
+
+    fun onPasswordChanged(newString: String) {
         password = newString
     }
-}
-
-@Composable
-@Preview(showBackground = false)
-fun Display3(){
-    LoginScreen(navController = rememberNavController(), myViewModel = LoginViewModel())
 }
 

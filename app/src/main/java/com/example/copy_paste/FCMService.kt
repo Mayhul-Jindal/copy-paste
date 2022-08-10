@@ -11,7 +11,6 @@ class FCMService : FirebaseMessagingService() {
     }
 
     override fun onMessageReceived(remoteMessage: RemoteMessage) {
-
         if(remoteMessage.data.isNotEmpty()){
             Log.d(tag, "Message data payload: ${remoteMessage.data}")
         }

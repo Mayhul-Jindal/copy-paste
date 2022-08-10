@@ -1,19 +1,16 @@
 package com.example.copy_paste.data
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CopiedDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun addCopied(copied: Copied)
-
-    @Query("SELECT * FROM copied_table ORDER BY id DESC")
+    @Query("SELECT * FROM copied_table")
     fun getAllCopied(): Flow<List<Copied>>
 
-    @Query("SELECT * FROM copied_table WHERE id = :id")
-    fun getSpecificCopiedT(id: Int): Copied
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun addCopied(copied: Copied)
+
+    @Delete
+    suspend fun deleteCopied(copied: Copied)
 }

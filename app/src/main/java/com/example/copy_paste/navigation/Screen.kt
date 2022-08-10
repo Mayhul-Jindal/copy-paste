@@ -1,7 +1,6 @@
 package com.example.copy_paste.navigation
 
-const val DETAIL_ARGUMENT_KEY1 = "id"
-const val DETAIL_ARGUMENT_KEY2 = "name"
+const val DETAIL_ARGUMENT_KEY1 = "copied_text"
 
 const val ROOT_GRAPH_ROUTE = "root"
 const val AUTH_GRAPH_ROUTE = "auth"
@@ -14,8 +13,8 @@ sealed class Screen(val route: String){
     object SignUp: Screen(route = "signup_screen")
     object Detail: Screen(route = "detail_screen")
     object Detail2: Screen(route = "detail2_screen?copied_text={copied_text}"){
-        fun passInfo(text: String = "No_text_given"): String{
-            return "detail2_screen?copied_text=$text"
+        fun passInfo(copied_text: String = "No_text_given"): String{
+            return "detail2_screen?copied_text=$copied_text"
         }
     }
 }

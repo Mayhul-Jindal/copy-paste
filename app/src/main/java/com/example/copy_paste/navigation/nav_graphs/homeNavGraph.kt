@@ -5,15 +5,16 @@ import android.util.Log
 import androidx.navigation.*
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.copy_paste.ViewModels.DetailScreenViewModel
 import com.example.copy_paste.navigation.DETAIL_ARGUMENT_KEY1
-import com.example.copy_paste.navigation.DETAIL_ARGUMENT_KEY2
 import com.example.copy_paste.navigation.HOME_GRAPH_ROUTE
 import com.example.copy_paste.navigation.Screen
 import com.example.copy_paste.screens.DetailScreen
 import com.example.copy_paste.screens.HomeScreen
 
 fun NavGraphBuilder.homeNavGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    detailScreenViewModel: DetailScreenViewModel
 ){
     navigation(
         route = HOME_GRAPH_ROUTE,
@@ -24,7 +25,7 @@ fun NavGraphBuilder.homeNavGraph(
         ){
             HomeScreen(navController)
         }
-        detailNavGraph(navController)
+        detailNavGraph(navController, detailScreenViewModel)
     }
 }
 
