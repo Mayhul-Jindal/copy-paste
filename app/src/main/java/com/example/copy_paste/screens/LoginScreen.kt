@@ -31,12 +31,13 @@ import androidx.navigation.NavHostController
 import com.example.copy_paste.R
 import com.example.copy_paste.navigation.DETAIL_GRAPH_ROUTE
 import com.example.copy_paste.navigation.Screen
+import com.example.copy_paste.ui.theme.copyPasteColor1
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LoginScreen(navController: NavHostController, myViewModel: LoginViewModel) {
     Scaffold(
-        backgroundColor = Color.Yellow
+        backgroundColor = copyPasteColor1
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
